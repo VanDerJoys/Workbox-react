@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Formik, Form, Field, ErrorMessage} from 'formik'
 
 import '../styles/login.css';
+import userServices from '../Api/users';
 
 class Login extends Component{
     render(){
@@ -23,7 +24,10 @@ class Login extends Component{
                                     return errors;
                                 }}
                                 onSubmit={(values, {setSubmitting}) =>{
-                                    console.log(values);
+                                    userServices.loginPost(values.username, values.password)
+                                    .then(response =>{
+                                        
+                                    })
                                     setSubmitting(false);
                                 }}
                             >
